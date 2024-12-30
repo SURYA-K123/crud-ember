@@ -1,0 +1,17 @@
+<h1>Posts</h1>
+<button type="button" {{on "click" this.createPost}}>Add Post</button>
+
+<div class="posts">
+  {{#each this.model as |post|}}
+    <div class="post-card">
+      <h2>{{post.title}}</h2>
+      <p>{{post.content}}</p>
+      <button type="button" {{on "click" (fn this.viewComments post)}}>View Comments</button>
+      <button type="button" {{on "click" (fn this.viewMore post.id)}}>View More</button>
+      <button type="button" {{on "click" (fn this.editPost post)}}>Edit</button>
+      <button type="button" {{on "click" this.deletePost}}>Delete</button>
+    </div>
+  {{/each}}
+</div>
+
+{{outlet}}
